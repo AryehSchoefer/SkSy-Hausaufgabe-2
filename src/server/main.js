@@ -2,16 +2,22 @@
 const express = require("express");
 const ViteExpress = require("vite-express");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 
 //import routers:
-const Router = require("./routes/serving.js");
+const Router = require("./routes.js");
 
 //init app
 const app = express();
 
-//using the imports in the application
-app.use("/", Router);
+//make sure to get json objects from post requests data
+app.use(express.json());
+app.use(bodyParser.json());
 
+
+//using the imports in the application
+//when url is localhost:3000/ , the router is called
+app.use("/", Router);
 
 //debuging route-----------------------------
 app.get("/hello", (req, res) => {
