@@ -34,7 +34,7 @@ router.post("/Todo/create", asyncHandler (async function (req, res) {
 
 router.put("/Todo/edit", asyncHandler( async function (req, res) {
 
-    const edittodo = await TodoModel.findById(req.body._id).exec();
+    const edittodo = await TodoModel.findById(req.body.id).exec();
 
     if (!edittodo) {
         throw new Error("cannot edit Todo. Todo not found");
