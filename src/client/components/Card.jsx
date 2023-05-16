@@ -1,4 +1,6 @@
-function Card({ description, deadline, progress }) {
+function Card({ id, description, deadline, progress }) {
+  console.log(`key: ${id}`);
+
   return (
     <div className="max-w-3xl w-3/4 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <a href="#">
@@ -7,7 +9,7 @@ function Card({ description, deadline, progress }) {
         </h5>
       </a>
       <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-        {deadline}
+        {`${deadline} • ${progress}%`}
       </p>
       <div className="flex gap-2 justify-end">
         <a
