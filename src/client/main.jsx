@@ -8,12 +8,14 @@ import ErrorPage from "./error-page";
 import Impressum from "./routes/impressum";
 import Home, { loader as homeLoader } from "./routes/Home";
 import Add, { action as addAction } from "./routes/Add";
+import { action as cardAction } from "./components/Card";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
+    action: cardAction,
     children: [
       {
         path: "",
