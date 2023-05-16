@@ -1,6 +1,15 @@
-function Card({ id, description, deadline, progress }) {
-  console.log(`key: ${id}`);
+import { Form } from "react-router-dom";
+import { deleteTodo } from "../data/todos";
 
+export async function action({ request, params }) {
+  const formData = await request.formData();
+  const todoId = formData.get("todo_id");
+  const deleted = await deleteTodo({ id: todoId });
+  console.log(deleted);
+  return null;
+}
+
+function Card({ id, description, deadline, progress }) {
   return (
     <div className="max-w-3xl w-3/4 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <a href="#">
@@ -18,12 +27,21 @@ function Card({ id, description, deadline, progress }) {
         >
           Edit
         </a>
-        <a
-          href="#"
-          className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-blue-800"
-        >
-          Delete
-        </a>
+        <Form method="delete">
+          <input
+            type="text"
+            name="todo_id"
+            value={id}
+            className="hidden"
+            readOnly
+          />
+          <button
+            type="submit"
+            className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-blue-800"
+          >
+            Delete
+          </button>
+        </Form>
       </div>
     </div>
   );
