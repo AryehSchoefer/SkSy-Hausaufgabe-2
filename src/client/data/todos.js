@@ -16,6 +16,17 @@ export async function addTodo({ description, progress, deadline }) {
   return jsonNewTodo;
 }
 
+export async function editTodo({ id, description, progress, deadline }) {
+  const updated = await fetch("http://localhost:3000/api/todo/edit", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ id, description, progress, deadline }),
+  });
+  return updated;
+}
+
 export async function deleteTodo({ id }) {
   const deleted = await fetch("http://localhost:3000/api/todo/delete", {
     method: "DELETE",
