@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className="bg-indigo-200 h-screen">
+      <div className="bg-indigo-200 h-screen overflow-auto">
         <div className="flex flex-col justify-center items-center gap-3 py-3">
           <Card
             description={"yo hasdhahsdaiushdi"}
