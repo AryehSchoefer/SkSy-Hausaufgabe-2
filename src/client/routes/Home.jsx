@@ -24,14 +24,6 @@ function Home() {
             />
           ))
           .reverse()}
-        {/* <Card
-          description={"yo hasdhahsdaiushdi"}
-          deadline={`${new Date(Date.now()).toLocaleDateString("de-DE", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}`}
-        /> */}
       </div>
     </div>
   );
