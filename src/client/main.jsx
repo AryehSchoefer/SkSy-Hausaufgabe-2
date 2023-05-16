@@ -9,6 +9,10 @@ import Impressum from "./routes/impressum";
 import Home, { loader as homeLoader } from "./routes/Home";
 import Add, { action as addAction } from "./routes/Add";
 import { action as cardAction } from "./components/Card";
+import Edit, {
+  loader as editLoader,
+  action as editAction,
+} from "./routes/Edit";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +34,12 @@ const router = createBrowserRouter([
         path: "add",
         element: <Add />,
         action: addAction,
+      },
+      {
+        path: "edit/:todoId",
+        element: <Edit />,
+        loader: editLoader,
+        action: editAction,
       },
     ],
   },
