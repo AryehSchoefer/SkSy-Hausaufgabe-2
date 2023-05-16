@@ -15,3 +15,14 @@ export async function addTodo({ description, progress, deadline }) {
   const jsonNewTodo = await newTodo.json();
   return jsonNewTodo;
 }
+
+export async function deleteTodo({ id }) {
+  const deleted = await fetch("http://localhost:3000/api/todo/delete", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ id }),
+  });
+  return deleted;
+}
